@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Integration Laboratory</title>
+
+<style>
+body{font-family:Arial,sans-serif;text-align:center;background:#f5f5f5;margin:0;padding:30px 15px;color:#222}
+.container{max-width:650px;margin:auto;background:white;padding:30px 20px;border-radius:18px}
+h1{margin:5px 0 8px;font-size:28px}
+.subtitle{color:#666;margin-bottom:30px}
+h2{margin-top:35px;margin-bottom:20px;font-size:21px}
+.links{display:flex;flex-direction:column;gap:12px}
+.link{display:block;text-decoration:none;color:white;background:#0077b5;padding:14px;border-radius:9px;font-size:16px}
+.link:hover{opacity:.85}
+.people{display:grid;grid-template-columns:repeat(2,1fr);gap:25px;margin-top:20px}
+.person{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#222}
+.person img{width:150px;height:150px;object-fit:cover;border-radius:50%;border:3px solid #eee}
+.person-name{margin-top:10px;font-size:16px;font-weight:bold}
+@media(max-width:500px){.container{padding:25px 15px}.people{grid-template-columns:1fr 1fr}.person img{width:120px;height:120px}h1{font-size:24px}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Grid Integration Laboratory</h1>
+<p class="subtitle">Indian Institute of Technology Bombay</p>
+
+<h2>Laboratory & Organizations</h2>
+
+<div class="links">
+
+<a class="link" href="https://www.linkedin.com/company/87156646" target="_blank">
+Grid Integration Laboratory — LinkedIn
+</a>
+
+<a class="link" href="https://www.ese.iitb.ac.in/~gil/" target="_blank">
+Grid Integration Laboratory — IIT Bombay
+</a>
+
+<a class="link" href="https://mahasldc.in/" target="_blank">
+Maharashtra State Load Despatch Center
+</a>
+
+</div>
+
+<h2>People</h2>
+
+<div class="people">
+
+<a class="person" href="https://www.ese.iitb.ac.in/~gil//prof-zakir/" target="_blank">
+<img src="photos/zakir.jpg" alt="Zakir Hussain Rather">
+<div class="person-name">Zakir Hussain Rather</div>
+</a>
+
+<a class="person" href="https://www.linkedin.com/in/akhilesh-panwar-15560367/" target="_blank">
+<img src="photos/akhilesh.jpg" alt="Akhilesh Panwar">
+<div class="person-name">Akhilesh Panwar</div>
+</a>
+
+<a class="person" href="https://www.linkedin.com/in/soonee/" target="_blank">
+<img src="photos/soonee.jpg" alt="Sushil Soonee">
+<div class="person-name">Sushil Soonee</div>
+</a>
+
+<a class="person" href="https://www.linkedin.com/in/debasis-de-aa39697/" target="_blank">
+<img src="photos/debasis.jpg" alt="Debasis De">
+<div class="person-name">Debasis De</div>
+</a>
+
+<a class="person" href="https://www.linkedin.com/in/shashank-jewalikar-24083b18/" target="_blank">
+<img src="photos/shashank.jpg" alt="Shashank Jewalikar">
+<div class="person-name">Shashank Jewalikar</div>
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
