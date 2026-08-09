@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CIGRE Paris Session 2026 | Optimizing Intra-State Generation Dispatch</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#eef5f2;
+color:#18352d;
+overflow-x:hidden;
+}
+
+/* Background graphics */
+
+body:before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+background:
+linear-gradient(30deg,transparent 49%,rgba(0,125,85,.06) 50%,transparent 51%),
+linear-gradient(150deg,transparent 49%,rgba(0,125,85,.05) 50%,transparent 51%),
+radial-gradient(circle at 20% 20%,rgba(0,125,85,.12),transparent 28%),
+radial-gradient(circle at 85% 80%,rgba(0,125,85,.10),transparent 30%),
+#eef5f2;
+background-size:180px 180px,180px 180px,auto,auto;
+}
+
+/* Main card */
+
+.container{
+max-width:850px;
+margin:25px auto;
+background:rgba(255,255,255,.96);
+border-radius:22px;
+box-shadow:0 10px 40px rgba(0,70,50,.15);
+overflow:hidden;
+}
+
+/* Header */
+
+.header{
+background:#007d55;
+color:white;
+padding:22px 25px;
+text-align:center;
+}
+
+.header h1{
+margin:0;
+font-size:27px;
+letter-spacing:.5px;
+}
+
+.header p{
+margin:7px 0 0;
+font-size:16px;
+font-weight:bold;
+}
+
+/* Paper section */
+
+.paper{
+padding:30px 30px 20px;
+text-align:center;
+}
+
+.paper-label{
+font-size:14px;
+font-weight:bold;
+color:#007d55;
+letter-spacing:1px;
+text-transform:uppercase;
+margin-bottom:12px;
+}
+
+.paper-title{
+font-family:Georgia,serif;
+font-size:25px;
+line-height:1.3;
+font-weight:bold;
+color:#174d3a;
+margin:0 auto;
+max-width:760px;
+}
+
+.paper-id{
+margin-top:14px;
+font-size:14px;
+color:#666;
+}
+
+/* Author section */
+
+.authors-title{
+text-align:center;
+font-size:21px;
+margin:20px 0 20px;
+color:#174d3a;
+}
+
+.authors{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;
+padding:0 25px 25px;
+}
+
+.author{
+text-decoration:none;
+color:#18352d;
+text-align:center;
+display:block;
+transition:transform .2s;
+}
+
+.author:hover{
+transform:translateY(-5px);
+}
+
+.author img{
+width:115px;
+height:115px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+.author-name{
+font-weight:bold;
+font-size:15px;
+margin-top:10px;
+line-height:1.25;
+}
+
+.author-affiliation{
+font-size:12px;
+color:#777;
+margin-top:4px;
+line-height:1.25;
+}
+
+/* Links */
+
+.links{
+padding:10px 30px 30px;
+}
+
+.links-title{
+text-align:center;
+font-size:20px;
+color:#174d3a;
+margin-bottom:15px;
+}
+
+.link{
+display:block;
+text-decoration:none;
+background:#007d55;
+color:white;
+padding:13px;
+margin:9px auto;
+border-radius:9px;
+max-width:600px;
+font-size:15px;
+font-weight:bold;
+transition:opacity .2s;
+}
+
+.link:hover{
+opacity:.85;
+}
+
+/* Organization section */
+
+.organizations{
+border-top:1px solid #dce8e3;
+padding:25px 25px 30px;
+text-align:center;
+background:#f7faf9;
+}
+
+.organizations-title{
+font-size:18px;
+font-weight:bold;
+color:#174d3a;
+margin-bottom:20px;
+}
+
+.logos{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.logo-box{
+text-decoration:none;
+color:#333;
+}
+
+.logo-box img{
+height:75px;
+max-width:210px;
+object-fit:contain;
+}
+
+.logo-name{
+font-size:12px;
+margin-top:7px;
+font-weight:bold;
+}
+
+/* Footer */
+
+.footer{
+background:#174d3a;
+color:white;
+text-align:center;
+padding:14px;
+font-size:12px;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+.container{
+margin:10px;
+border-radius:16px;
+}
+
+.header h1{
+font-size:23px;
+}
+
+.paper{
+padding:25px 18px 15px;
+}
+
+.paper-title{
+font-size:21px;
+}
+
+.authors{
+grid-template-columns:repeat(2,1fr);
+padding:0 20px 25px;
+}
+
+.author img{
+width:105px;
+height:105px;
+}
+
+.logos{
+gap:30px;
+}
+
+}
+
+@media(max-width:380px){
+
+.authors{
+grid-template-columns:1fr 1fr;
+}
+
+.author img{
+width:90px;
+height:90px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- CIGRE HEADER -->
+
+<div class="header">
+<h1>CIGRE Paris Session 2026</h1>
+<p>23–28 August 2026 · Palais des Congrès, Paris, France</p>
+</div>
+
+
+<!-- PAPER -->
+
+<div class="paper">
+
+<div class="paper-label">
+CIGRE Paper · Paper ID 10422
+</div>
+
+<h2 class="paper-title">
+Optimizing Intra-State Generation Dispatch for Economic Efficiency:
+A Case Study at State Level in India
+</h2>
+
+<div class="paper-id">
+C5 Electricity Markets & Regulation · PS3 Applying practical experiences to emerging issues
+</div>
+
+</div>
+
+
+<!-- AUTHORS -->
+
+<h2 class="authors-title">Meet the Authors</h2>
+
+<div class="authors">
+
+<a class="author" href="https://www.ese.iitb.ac.in/~gil//prof-zakir/" target="_blank">
+<img src="photos/zakir.jpg" alt="Zakir Rather">
+<div class="author-name">Zakir Rather</div>
+<div class="author-affiliation">IIT Bombay</div>
+</a>
+
+<a class="author" href="https://www.linkedin.com/in/akhilesh-panwar-15560367/" target="_blank">
+<img src="photos/akhilesh.jpg" alt="Akhilesh Panwar">
+<div class="author-name">Akhilesh Panwar</div>
+<div class="author-affiliation">IIT Bombay</div>
+</a>
+
+<a class="author" href="https://www.linkedin.com/in/soonee/" target="_blank">
+<img src="photos/soonee.jpg" alt="Sushil Soonee">
+<div class="author-name">Sushil Soonee</div>
+<div class="author-affiliation">Former Grid-India</div>
+</a>
+
+<a class="author" href="https://www.linkedin.com/in/debasis-de-aa39697/" target="_blank">
+<img src="photos/debasis.jpg" alt="Debasis De">
+<div class="author-name">Debasis De</div>
+<div class="author-affiliation">Former Grid-India</div>
+</a>
+
+<a class="author" href="https://www.linkedin.com/in/shashank-jewalikar-24083b18/" target="_blank">
+<img src="photos/shashank.jpg" alt="Shashank Jewalikar">
+<div class="author-name">Shashank Jewalikar</div>
+<div class="author-affiliation">MSLDC</div>
+</a>
+
+</div>
+
+
+<!-- ORGANIZATION LINKS -->
+
+<div class="links">
+
+<div class="links-title">Organizations & Research</div>
+
+<a class="link" href="https://www.ese.iitb.ac.in/~gil/" target="_blank">
+Grid Integration Laboratory · IIT Bombay
+</a>
+
+<a class="link" href="https://www.linkedin.com/company/87156646" target="_blank">
+Grid Integration Laboratory · LinkedIn
+</a>
+
+<a class="link" href="https://mahasldc.in/" target="_blank">
+Maharashtra State Load Despatch Center
+</a>
+
+</div>
+
+
+<!-- ORGANIZATION LOGOS -->
+
+<div class="organizations">
+
+<div class="organizations-title">
+Research & Implementation Partners
+</div>
+
+<div class="logos">
+
+<a class="logo-box" href="https://www.ese.iitb.ac.in/~gil/" target="_blank">
+<img src="GIL_logo.png" alt="Grid Integration Laboratory">
+<div class="logo-name">Grid Integration Laboratory · IIT Bombay</div>
+</a>
+
+<a class="logo-box" href="https://mahasldc.in/" target="_blank">
+<img src="MSETCL.png" alt="Maharashtra State Load Despatch Center">
+<div class="logo-name">Maharashtra State Load Despatch Center</div>
+</a>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+CIGRE Paris Session 2026 · Paper ID 10422
+</div>
+
+</div>
+
+</body>
+</html>
